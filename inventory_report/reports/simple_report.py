@@ -1,4 +1,3 @@
-from collections import Counter
 from datetime import date
 from statistics import mode
 
