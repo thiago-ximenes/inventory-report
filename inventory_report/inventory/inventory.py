@@ -1,4 +1,5 @@
 import csv
+import json
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
 
@@ -11,7 +12,10 @@ class Inventory:
 
     def __get_archive_data(self, file_path):
         with open(file_path, "r") as file:
-            report_data = list(csv.DictReader(file))
+            if file_path.endswith(".csv"):
+                report_data = list(csv.DictReader(file))
+            if file_path.endswith(".json"):
+                report_data = json.load(file)
 
         return report_data
 
