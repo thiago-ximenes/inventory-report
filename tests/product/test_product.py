@@ -14,7 +14,7 @@ def test_cria_produto():
         fake_product.instrucoes_de_armazenamento,
     )
 
-    assert product.id is fake_product.id
+    assert product.id == fake_product.id
     assert product.nome_do_produto == fake_product.nome_do_produto
     assert product.nome_da_empresa == fake_product.nome_da_empresa
     assert product.data_de_fabricacao == fake_product.data_de_fabricacao
