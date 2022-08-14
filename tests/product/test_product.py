@@ -1,21 +1,26 @@
 from inventory_report.inventory.product import Product
+from ..factories.product_factory import ProductFactory
 
 
 def test_cria_produto():
-    produto = Product(
-        26736128,
-        "Pão Francês",
-        "Padaria Renascer",
-        "2022-13-08",
-        "2023-14-08",
-        "padaria-renascer-pao-frances_01",
-        "Tempera ambiente",
+    fake_product = ProductFactory()
+    product = Product(
+        fake_product.id,
+        fake_product.nome_do_produto,
+        fake_product.nome_da_empresa,
+        fake_product.data_de_fabricacao,
+        fake_product.data_de_validade,
+        fake_product.numero_de_serie,
+        fake_product.instrucoes_de_armazenamento,
     )
 
-    assert produto.id == 26736128
-    assert produto.nome_do_produto == "Pão Francês"
-    assert produto.nome_da_empresa == "Padaria Renascer"
-    assert produto.data_de_fabricacao == "2022-13-08"
-    assert produto.data_de_validade == "2023-14-08"
-    assert produto.numero_de_serie == "padaria-renascer-pao-frances_01"
-    assert produto.instrucoes_de_armazenamento == "Tempera ambiente"
+    assert product.id is fake_product.id
+    assert product.nome_do_produto == fake_product.nome_do_produto
+    assert product.nome_da_empresa == fake_product.nome_da_empresa
+    assert product.data_de_fabricacao == fake_product.data_de_fabricacao
+    assert product.data_de_validade == fake_product.data_de_validade
+    assert product.numero_de_serie == fake_product.numero_de_serie
+    assert (
+        product.instrucoes_de_armazenamento
+        == fake_product.instrucoes_de_armazenamento
+    )
